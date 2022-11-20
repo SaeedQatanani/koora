@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -45,6 +46,17 @@ public class User {
     @NotEmpty(message="Confirm Password is required!")
     @Size(min=8, max=128, message="Confirm Password must be between 8 and 128 characters")
     private String confirm;
+    
+    @OneToMany(mappedBy="host", fetch = FetchType.LAZY)
+    private List<Event> myevents;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "users_events", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "event_id")
+ )
+    private List<Event> events;
     
     @Column(updatable=false)
     private Date createdAt;
@@ -155,5 +167,23 @@ public class User {
 	@PreUpdate
 	protected void onUpdate(){
       this.updatedAt = new Date();
-	}  
+	}
+
+	public List<Event> getMyevents() {
+		return myevents;
+	}
+
+	public void setMyevents(List<Event> myevents) {
+		this.myevents = myevents;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	} 
+	
+	
 }

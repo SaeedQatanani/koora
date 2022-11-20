@@ -15,5 +15,9 @@
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <input type="submit" value="Logout!" />
     </form>
+    
+    
+    <div><a href="/events/new">Host a game night</a></div>
+    
 </body>
 </html>
