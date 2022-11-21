@@ -16,25 +16,31 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsos.koora.models.Event;
+import com.axsos.koora.models.Match;
 import com.axsos.koora.models.Team;
 import com.axsos.koora.models.User;
 import com.axsos.koora.services.MainService;
+import com.axsos.koora.services.MatchService;
 import com.axsos.koora.services.UserService;
 
 @Controller
 public class MainController {
 	private final UserService userService;
 	private final MainService mainService;
-	public  MainController  (UserService userService, MainService mainService ){
+	private final MatchService matchService;
+	public  MainController (UserService userService, MainService mainService, MatchService matchService){
       this.userService = userService;
       this.mainService=mainService ;
+      this.matchService=matchService ;
   }
 	
 	 @GetMapping ("/events/new")
 	   public String newevent(@ModelAttribute("event")Event event,Principal principal, Model model) {
 		 String username = principal.getName();
+		 List<Match> matches = matchService.findallmatches();
 	     model.addAttribute("currentUser", userService.findByUsername(username));
-		   return "newevent.jsp";
+	     model.addAttribute("matches", matches);
+		 return "newevent.jsp";
 	   }
 	   
 	   @PostMapping("/events/create")
@@ -52,7 +58,9 @@ public class MainController {
 	   public String editevent(@PathVariable("id")Long id,Principal principal, Model model) {
 		   Event event= mainService.findoneevent(id);
 		   String username = principal.getName();
+		   List<Match> matches = matchService.findallmatches();
 		   model.addAttribute("currentUser", userService.findByUsername(username));
+		   model.addAttribute("matches", matches);
 		   model.addAttribute("event", event);
 		   return "editevent.jsp";
 	   }
@@ -96,10 +104,14 @@ public class MainController {
 			String username = principal.getName();
 			User user = userService.findByUsername(username);
 			List<User> users = event.getAttendees();
-			users.add(user);
-			event.setAttendees(users);
-			mainService.updateevent(event);
-		    return "redirect:/home";
+			Integer attendees = users.size();
+			if (attendees < event.getCapacity()) {
+				users.add(user);
+				event.setAttendees(users);
+				mainService.updateevent(event);
+				return "redirect:/home";	
+			}
+			return "/events"+id;
 		    }
 	   
 	   @GetMapping("/events/{id}/leave")

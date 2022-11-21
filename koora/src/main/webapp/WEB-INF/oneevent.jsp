@@ -21,6 +21,7 @@
 		<h4>Event: <c:out value="${event.location}"/></h4>
 		<h4>Event: <c:out value="${event.city}"/></h4>
 		<h4>Event: <c:out value="${event.placeType}"/></h4>
+		<h4>Event: <c:out value="${event.match.firstTeam}"/> Vs <c:out value="${event.match.secondTeam}"/></h4>
 		
 		<c:choose>
 			<c:when test="${event.host.id==currentUser.id}">
@@ -30,7 +31,16 @@
 			<c:when test="${attendance}">
 		    	<a href="/events/${event.id}/leave">Leave</a>
 			</c:when>
-			<c:otherwise><a href="/events/${event.id}/join">Join</a></c:otherwise>
+			<c:otherwise>
+				<c:choose>
+				<c:when test="${event.attendees.size() < event.capacity}">
+					<a href="/events/${event.id}/join">Join</a>
+				</c:when>
+				<c:otherwise>
+					<p>This event is fully booked.</p>
+				</c:otherwise>
+				</c:choose>
+			</c:otherwise>
 		</c:choose>
 	</main>
 

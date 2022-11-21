@@ -61,6 +61,16 @@
   </div>
   
   
+    <div class="form-group">
+    <form:label  path="match">Match</form:label>
+	<form:select path="match" class="form-select">
+		<c:forEach var="match" items="${matches}">
+			<form:option value="${match.id}"><c:out value="${match.firstTeam}"/>  vs <c:out value="${match.secondTeam}"/></form:option>
+		</c:forEach>
+	</form:select>
+  </div>
+  
+  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
 </div>

@@ -51,10 +51,20 @@
   </div>
   
   
-    <div class="form-group">
+  <div class="form-group">
     <form:label path="contact">Contact</form:label>
     <form:errors path="contact" class="text-danger" />
     <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="contact"></form:input>
+  </div>
+  
+  
+    <div class="form-group">
+    <form:label  path="match">Match</form:label>
+	<form:select path="match" class="form-select">
+		<c:forEach var="match" items="${matches}">
+			<form:option value="${match.id}"><c:out value="${match.firstTeam}"/>  vs <c:out value="${match.secondTeam}"/></form:option>
+		</c:forEach>
+	</form:select>
   </div>
   
   
