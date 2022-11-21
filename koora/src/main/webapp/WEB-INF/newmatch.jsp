@@ -20,26 +20,25 @@
 <form:form action="/admin/create" method="post" modelAttribute="match">
 
   <div class="form-group">
-    <form:label  path="firstTeam">Place type</form:label>
-	<form:select path="firstTeam" class="form-select"><form:options items="${firstTeam}" /></form:select>
+    <form:label  path="firstTeam">Team 1</form:label>
+	<form:select path="firstTeam" class="form-select"><form:options items="${teams}" /></form:select>
   </div>
    
   <div class="form-group">
-    <form:label  path="secondTeam">Place type</form:label>
-	<form:select path="secondTeam" class="form-select"><form:options items="${secondTeam}" /></form:select>
+    <form:label  path="secondTeam">Team 2</form:label>
+	<form:select path="secondTeam" class="form-select"><form:options items="${teams}" /></form:select>
   </div>
-    
-    
-  
-  
-  
-  
-  
   
     <div class="form-group">
     <form:label path="matchDate">Match Date</form:label>
-    <form:errors path=" matchDate" class="text-danger" />
-    <form:input type="datetime-local" class="form-control"  aria-describedby="emailHelp"  path=" matchDate"></form:input>
+    <form:errors path="matchDate" class="text-danger" />
+    <form:input type="date" class="form-control"  aria-describedby="emailHelp"  path="matchDate"></form:input>
+  </div>
+  
+  <div class="form-group">
+    <form:label path="matchTime">Match Time</form:label>
+    <form:errors path="matchTime" class="text-danger" />
+    <form:input type="time" class="form-control"  aria-describedby="emailHelp"  path="matchTime"></form:input>
   </div>
   
   

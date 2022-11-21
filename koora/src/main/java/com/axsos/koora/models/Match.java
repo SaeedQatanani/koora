@@ -1,6 +1,5 @@
 package com.axsos.koora.models;
 
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -18,8 +17,6 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 @Entity
 @Table(name="matches")
 public class Match {
@@ -32,9 +29,13 @@ public class Match {
     
 	@NotNull
     private Team secondTeam;
+	
 	@NotNull
-	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
-	private LocalDateTime matchDate;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date matchDate;
+	
+	
+	private String matchTime;
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -42,6 +43,12 @@ public class Match {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date updatedAt;
     
+    @OneToMany(mappedBy="match", fetch = FetchType.LAZY)
+    private List<Event> games;
+    
+    public Match() {
+    	
+    }
     @PrePersist
     protected void onCreate(){
         this.createdAt = new Date();
@@ -51,12 +58,6 @@ public class Match {
         this.updatedAt = new Date();
     }
     
-    @OneToMany(mappedBy="match", fetch = FetchType.LAZY)
-    private List<Event> games;
-    
-    public Match() {
-    	
-    }
 	public Long getId() {
 		return id;
 	}
@@ -93,11 +94,16 @@ public class Match {
 	public void setGames(List<Event> games) {
 		this.games = games;
 	}
-	public LocalDateTime getMatchDate() {
+	public Date getMatchDate() {
 		return matchDate;
 	}
-	public void setMatchDate(LocalDateTime matchDate) {
+	public void setMatchDate(Date matchDate) {
 		this.matchDate = matchDate;
 	}
-	
+	public String getMatchTime() {
+		return matchTime;
+	}
+	public void setMatchTime(String matchTime) {
+		this.matchTime = matchTime;
+	}
 }

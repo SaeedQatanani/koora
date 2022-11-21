@@ -1,7 +1,5 @@
 package com.axsos.koora.controllers;
 
-import java.security.Principal;
-
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-
 
 import com.axsos.koora.models.Match;
 import com.axsos.koora.services.MatchService;
@@ -26,17 +23,8 @@ public class MatchController {
 		
 	}
 	
-	
-	
-	
-	
 	 @GetMapping ("/admin/new")
-	   public String newmatch(@ModelAttribute("match")Match match, Model model) {
-//		 String username = principal.getName();
-//	     model.addAttribute("currentUser", userService.findByUsername(username));
-////		   Long user_id = (Long) session.getAttribute("user_id");
-////		   User thisUser = userService.findUserById(user_id);
-////	       model.addAttribute("thisuser", thisUser);
+	   public String newmatch(@ModelAttribute("match")Match match) {
 		   return "newmatch.jsp";
 	   }
 	   
@@ -54,8 +42,6 @@ public class MatchController {
 	   @GetMapping("/admin/{id}/edit")
 	   public String editmatch(@PathVariable("id")Long id, Model model) {
 		   Match match= matchService.findonematch(id);
-		  
-		  
 		   model.addAttribute("match", match);
 		   return "editmatch.jsp";
 	   }

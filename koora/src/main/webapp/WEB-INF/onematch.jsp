@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
     <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
@@ -16,11 +17,10 @@
 <body>
 	<main class="container">
 		<h4>Match: <c:out value="${thematch.firstTeam}"/>  vs <c:out value="${thematch.secondTeam}"/></h4>
-		<h4>Match Date: <c:out value="${thematch.matchDate}"/></h4>
-		
-		
-		
+		<h4>Match Date:  <fmt:formatDate value="${thematch.matchDate}" pattern="MMMM dd, yyyy"/></h4>
+		<h4>Match Time: <c:out value="${thematch.matchTime}"/></h4>
+		<a style="text-decoration: none;" href="/admin/${thematch.id}/delete">Delete</a>
 	</main>
-
+	
 </body>
 </html>

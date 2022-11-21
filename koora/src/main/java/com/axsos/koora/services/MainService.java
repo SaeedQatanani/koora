@@ -8,19 +8,16 @@ import org.springframework.stereotype.Service;
 import com.axsos.koora.models.Event;
 import com.axsos.koora.models.User;
 import com.axsos.koora.repositories.EventRepository;
-import com.axsos.koora.repositories.MatchRepository;
 import com.axsos.koora.repositories.UserRepository;
 
 @Service
 public class MainService {
 	private UserRepository userRepository;
 	private EventRepository eventRepository;
-	private MatchRepository matchRepository;
 	
-	public MainService(UserRepository userRepository,EventRepository eventRepository, MatchRepository matchRepository)
+	public MainService(UserRepository userRepository,EventRepository eventRepository)
 	{
 		this.userRepository=userRepository;
-		this.matchRepository=matchRepository;
 		this.eventRepository=eventRepository;
 	}
 	

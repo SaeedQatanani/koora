@@ -17,35 +17,33 @@
 <div style="width:1000px; height:1000px; padding:10px; margin:0 auto">
 <h1>Create a match!</h1>
 
-<form:form action="/admin/create" method="post" modelAttribute="match">
+<form:form action="/admin/${match.id}/edit" method="post" modelAttribute="match">
 <input type="hidden" name="_method" value="put">
 
 
 <form:input type="hidden"  path="games" />
 
   <div class="form-group">
-    <form:label  path="firstTeam">Place type</form:label>
+    <form:label  path="firstTeam">Team 1</form:label>
 	<form:select path="firstTeam" class="form-select"><form:options items="${firstTeam}" /></form:select>
   </div>
    
   <div class="form-group">
-    <form:label  path="secondTeam">Place type</form:label>
+    <form:label  path="secondTeam">Team 2</form:label>
 	<form:select path="secondTeam" class="form-select"><form:options items="${secondTeam}" /></form:select>
   </div>
-    
-    
-  
-  
-  
-  
-  
   
     <div class="form-group">
     <form:label path="matchDate">Match Date</form:label>
-    <form:errors path=" matchDate" class="text-danger" />
-    <form:input type="datetime-local" class="form-control"  aria-describedby="emailHelp"  path=" matchDate"></form:input>
+    <form:errors path="matchDate" class="text-danger" />
+    <form:input type="date" class="form-control"  aria-describedby="emailHelp"  path="matchDate"></form:input>
   </div>
   
+  <div class="form-group">
+    <form:label path="matchTime">Match Time</form:label>
+    <form:errors path="matchTime" class="text-danger" />
+    <form:input type="time" class="form-control"  aria-describedby="emailHelp"  path="matchTime"></form:input>
+  </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>
 </form:form>
