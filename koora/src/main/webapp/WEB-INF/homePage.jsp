@@ -18,6 +18,6 @@
     
     
     <div><a href="/events/new">Host a game night</a></div>
-    
+    <div><a href="/profile">Make a prediction</a></div>
 </body>
 </html>

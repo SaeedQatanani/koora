@@ -1,6 +1,7 @@
 package com.axsos.koora.controllers;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.validation.Valid;
 
@@ -12,8 +13,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.axsos.koora.models.Event;
+import com.axsos.koora.models.Team;
+import com.axsos.koora.models.User;
 import com.axsos.koora.services.MainService;
 import com.axsos.koora.services.UserService;
 
@@ -30,9 +34,6 @@ public class MainController {
 	   public String newevent(@ModelAttribute("event")Event event,Principal principal, Model model) {
 		 String username = principal.getName();
 	     model.addAttribute("currentUser", userService.findByUsername(username));
-//		   Long user_id = (Long) session.getAttribute("user_id");
-//		   User thisUser = userService.findUserById(user_id);
-//	       model.addAttribute("thisuser", thisUser);
 		   return "newevent.jsp";
 	   }
 	   
@@ -68,12 +69,18 @@ public class MainController {
 	   }
 	   
 	   @GetMapping("/events/{id}")
-	   public String showevent(@PathVariable("id") Long id, Model model,Principal principal) {
-		   Event theevent = mainService.findoneevent(id);
-		   model.addAttribute("event", theevent);
-//		   Long user_id = (Long) session.getAttribute("user_id");
+	   public String showevent(@PathVariable("id") Long id, Model model, Principal principal) {
+		   Event event = mainService.findoneevent(id);
 		   String username = principal.getName();
-	       model.addAttribute("currentUser", userService.findByUsername(username));
+		   User user = userService.findByUsername(username);
+		   List<User> users = event.getAttendees();
+		   boolean attendance = false;
+		   if (users.contains(user)) {
+			   attendance = true;
+		   }
+		   model.addAttribute("event", event);
+	       model.addAttribute("currentUser", user);
+	       model.addAttribute("attendance", attendance);
 		   return "oneevent.jsp";
 	   }
 	   
@@ -81,5 +88,53 @@ public class MainController {
 	   public String deleteEvent(@PathVariable("id") Long id) {
 		   mainService.deleteevent(id);
 		   return "redirect:/home";
+	   }
+	   
+	   @GetMapping("/events/{id}/join")
+	   public String join(@PathVariable("id") Long id, Principal principal) {
+			Event event = mainService.findoneevent(id);
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
+			List<User> users = event.getAttendees();
+			users.add(user);
+			event.setAttendees(users);
+			mainService.updateevent(event);
+		    return "redirect:/home";
+		    }
+	   
+	   @GetMapping("/events/{id}/leave")
+	   public String leave(@PathVariable("id") Long id, Principal principal) {
+			Event event = mainService.findoneevent(id);
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
+			List<User> users = event.getAttendees();
+			users.remove(user);
+			event.setAttendees(users);
+			mainService.updateevent(event);
+		    return "redirect:/home";
+		    }
+	   
+	   @GetMapping("/profile")
+	   public String profile(Principal principal, Model model) {
+			String username = principal.getName();
+			User user = userService.findByUsername(username);
+			boolean predection = false;
+			if (user.getPrediction()!=null) {
+				predection = true;
+			}
+			model.addAttribute("predection", predection);
+		    model.addAttribute("currentUser", user);
+		    model.addAttribute("teams", Team.values());
+		    return "profile.jsp";
+		    }
+	   @PostMapping("/profile/predict")
+	   public String predict(Principal principal, @RequestParam("prediction") Team team) {
+		   System.out.println("fff");
+		   String username = principal.getName();
+		   User user = userService.findByUsername(username);
+		   user.setPrediction(team);
+		   user.setConfirm(user.getPassword());
+		   mainService.updatUser(user);
+		   return "redirect:/profile";
 	   }
 }

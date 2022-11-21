@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.axsos.koora.models.Event;
+import com.axsos.koora.models.User;
 import com.axsos.koora.repositories.EventRepository;
 import com.axsos.koora.repositories.MatchRepository;
 import com.axsos.koora.repositories.UserRepository;
@@ -47,6 +48,10 @@ public class MainService {
 	
 	public void deleteevent(Long id) {
 		eventRepository.deleteById(id);
+	}
+	
+	public User updatUser(User user) {
+		return userRepository.save(user);
 	}
 	
 	

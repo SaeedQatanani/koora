@@ -27,6 +27,9 @@
 		    	<a style="text-decoration: none;" href="/events/${event.id}/delete">Delete</a>
 				<a style="text-decoration: none;" href="/events/${event.id}/edit">Edit</a>
 			</c:when>
+			<c:when test="${attendance}">
+		    	<a href="/events/${event.id}/leave">Leave</a>
+			</c:when>
 			<c:otherwise><a href="/events/${event.id}/join">Join</a></c:otherwise>
 		</c:choose>
 	</main>
