@@ -17,9 +17,9 @@
 <div style="width:1000px; height:1000px; padding:10px; margin:0 auto">
 <h1>Edit an event!</h1>
 
-<form:form action="/events/create" method="post" modelAttribute="event">
-<form:input type="hidden"  path="host" value="${currentUser.id}"/>
+<form:form action="/events/${event.id}/edit" method="post" modelAttribute="event">
 <input type="hidden" name="_method" value="put">
+<form:input type="hidden"  path="host" value="${currentUser.id}"/>
 
 <form:input type="hidden"  path="attendees" />
   <div class="form-group">
@@ -36,16 +36,14 @@
     
     
   <div class="form-group">
-    <form:label path="city">City</form:label>
-    <form:errors path="city" class="text-danger" />
-    <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="city"></form:input>
+    <form:label  path="city">City</form:label>
+	<form:select path="city" class="form-select"><form:options items="${cities}" /></form:select>
   </div>
   
   
   <div class="form-group">
-    <form:label path="placeType">Place Type</form:label>
-    <form:errors path="placeType" class="text-danger" />
-    <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="placeType"></form:input>
+    <form:label  path="placeType">Place type</form:label>
+	<form:select path="placeType" class="form-select"><form:options items="${placeTypes}" /></form:select>
   </div>
   
   
@@ -57,7 +55,7 @@
   
   
     <div class="form-group">
-    <form:label path="contact">contact</form:label>
+    <form:label path="contact">Contact</form:label>
     <form:errors path="contact" class="text-danger" />
     <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="contact"></form:input>
   </div>

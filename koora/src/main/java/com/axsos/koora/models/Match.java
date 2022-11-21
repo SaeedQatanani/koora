@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,18 +24,11 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	
-	private enum firstTeam {
-		Qatar, Ecuador, Senegal, Netherlands,England, Iran, USA, Wales,Argentina, SaudiArabia, Mexico, Poland,
-		France, Australia, Denmark, Tunisia,Spain, CostaRica, Germany, Japan,Belgium, Canada, Morocco, Croatia,
-		 Brazil, Serbia, Switzerland, Cameroon,Portugal, Ghana, Uruguay, SouthKorea
-    };
+	@NotNull
+	private Team firstTeam;
     
-    private enum secondTeam {
-		Qatar, Ecuador, Senegal, Netherlands,England, Iran, USA, Wales,Argentina, SaudiArabia, Mexico, Poland,
-		France, Australia, Denmark, Tunisia,Spain, CostaRica, Germany, Japan,Belgium, Canada, Morocco, Croatia,
-		 Brazil, Serbia, Switzerland, Cameroon,Portugal, Ghana, Uruguay, SouthKorea
-    };
+	@NotNull
+    private Team secondTeam;
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -75,7 +69,22 @@ public class Match {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
-    
-    
-
+	public Team getFirstTeam() {
+		return firstTeam;
+	}
+	public void setFirstTeam(Team firstTeam) {
+		this.firstTeam = firstTeam;
+	}
+	public Team getSecondTeam() {
+		return secondTeam;
+	}
+	public void setSecondTeam(Team secondTeam) {
+		this.secondTeam = secondTeam;
+	}
+	public List<Event> getGames() {
+		return games;
+	}
+	public void setGames(List<Event> games) {
+		this.games = games;
+	}
 }

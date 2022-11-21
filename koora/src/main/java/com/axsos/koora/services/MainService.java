@@ -23,15 +23,11 @@ public class MainService {
 		this.eventRepository=eventRepository;
 	}
 	
-	
 	public Event createvent(Event event) {
-
 		return eventRepository.save(event);
 	}
 	
-	
 	public Event updateevent(Event event) {
-
 		return eventRepository.save(event);
 	}
 
@@ -49,9 +45,8 @@ public class MainService {
 		return eventRepository.findAll();
 	}
 	
-public void deleteevent(Long id) {
-		
-	eventRepository.deleteById(id);
+	public void deleteevent(Long id) {
+		eventRepository.deleteById(id);
 	}
 	
 	

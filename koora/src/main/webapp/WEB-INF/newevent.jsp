@@ -33,16 +33,14 @@
     
     
   <div class="form-group">
-    <form:label path="city">City</form:label>
-    <form:errors path="city" class="text-danger" />
-    <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="city"></form:input>
+    <form:label  path="city">City</form:label>
+	<form:select path="city" class="form-select"><form:options items="${cities}" /></form:select>
   </div>
   
   
   <div class="form-group">
-    <form:label path="placeType">Place Type</form:label>
-    <form:errors path="placeType" class="text-danger" />
-    <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="placeType"></form:input>
+    <form:label  path="placeType">Place type</form:label>
+	<form:select path="placeType" class="form-select"><form:options items="${placeTypes}" /></form:select>
   </div>
   
   
@@ -54,7 +52,7 @@
   
   
     <div class="form-group">
-    <form:label path="contact">contact</form:label>
+    <form:label path="contact">Contact</form:label>
     <form:errors path="contact" class="text-danger" />
     <form:input type="text" class="form-control"  aria-describedby="emailHelp"  path="contact"></form:input>
   </div>

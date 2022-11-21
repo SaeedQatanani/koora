@@ -28,15 +28,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @NotEmpty(message="Please add your user name!")
-    @Size(min=3, max=10, message="User name should be betweeen three and ten charaters.")
+    @NotEmpty(message="Please add your username!")
+    @Size(min=3, max=20, message="Username should be betweeen three and twenty charaters.")
     private String username;
     
     @NotEmpty(message="Email is required!")
     @Email(message="Please enter a valid email!")
     private String email;
     
-    private String prediction;
+    private Team prediction;
     
     @NotEmpty(message="Password is required!")
     @Size(min=8, max=128, message="Password must be between 8 and 128 characters")
@@ -152,11 +152,11 @@ public class User {
 		this.roles = roles;
 	}
 
-	public String getPrediction() {
+	public Team getPrediction() {
 		return prediction;
 	}
 
-	public void setPrediction(String prediction) {
+	public void setPrediction(Team prediction) {
 		this.prediction = prediction;
 	}
 

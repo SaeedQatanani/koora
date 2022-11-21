@@ -38,14 +38,11 @@ public class Event {
     @Size(min = 5, max = 200)
     private String location;
 	
-	public enum city {
-        Nablus, Ramallah, Jenin, Jericho, Bethlehem, Tulkarem
-    };
+	@NotNull
+	public City city;
     
-    public enum placeType {
-    	Cafe, Restaurant, Personal
-    	
-    };
+	@NotNull
+    public PlaceType placeType;
 	
     @NotNull
     private Integer capacity;
@@ -150,15 +147,16 @@ public class Event {
 	public void setMatch(Match match) {
 		this.match = match;
 	}
-	
-	
-	
-	
-	
-	
-    
-    
-    
-    
-
+	public City getCity() {
+		return city;
+	}
+	public void setCity(City city) {
+		this.city = city;
+	}
+	public PlaceType getPlaceType() {
+		return placeType;
+	}
+	public void setPlaceType(PlaceType placeType) {
+		this.placeType = placeType;
+	}
 }
