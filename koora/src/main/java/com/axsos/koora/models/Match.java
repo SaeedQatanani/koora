@@ -1,5 +1,6 @@
 package com.axsos.koora.models;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -17,6 +18,8 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name="matches")
 public class Match {
@@ -29,6 +32,9 @@ public class Match {
     
 	@NotNull
     private Team secondTeam;
+	@NotNull
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
+	private LocalDateTime matchDate;
     
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -87,4 +93,11 @@ public class Match {
 	public void setGames(List<Event> games) {
 		this.games = games;
 	}
+	public LocalDateTime getMatchDate() {
+		return matchDate;
+	}
+	public void setMatchDate(LocalDateTime matchDate) {
+		this.matchDate = matchDate;
+	}
+	
 }
