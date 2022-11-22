@@ -1,12 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- c:out ; c:forEach etc. --> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!-- Formatting (dates) --> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!-- form:form -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
 <base href="/">
+	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Untree.co">
@@ -23,11 +28,12 @@
 	<link rel="stylesheet" href="css/flatpickr.min.css">
 	<link rel="stylesheet" href="css/glightbox.min.css">
 	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><c:out value="${currentUser.username}"/> profile</title>
+	<title>About us</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="test.js"></script>
 </head>
-<body  style="background-color: wheat">
+<body>
+
 
 	<div class="site-mobile-menu site-navbar-target">
 		<div class="site-mobile-menu-header">
@@ -38,6 +44,7 @@
 		<div class="site-mobile-menu-body"></div>
 	</div>
 
+
 	<nav class="site-nav mt-3">
 		<div class="container">
 			<div class="site-navigation">
@@ -47,7 +54,7 @@
 					</div>
 					<div class="col-lg-6 d-none d-lg-inline-block text-center nav-center-wrap">
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
-							<li class="active"><a style="font-weight: bold" href="/">Home</a></li>
+							<li class="active"><a style="font-weight: bold" href="/matches">Home</a></li>
 							<li class="active"><a style="font-weight: bold"href="/">Matches</a></li>
 							<li class="active"><a style="font-weight: bold"href="/events/new">Create Event</a></li>
 							<li class="active"><a style="font-weight: bold"href="/profile">Profile</a></li>
@@ -64,7 +71,7 @@
         						<input type="submit" value="Logout!" style="margin:0; padding:0; border:0;"/>
     						</form>
     						</a>
-    						</li>
+							</li>
 						</ul>
 						<a href="#" class="burger ms-auto float-end site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
 							<span></span>
@@ -76,43 +83,27 @@
 	</nav>
 
 
-    <div id="create_form">
-        <div class="for">
-            PROFILE
-        </div>
-    </div>
-<div id="create_formm">
-    <div class="forr" style="height: 300px;">
-        <div style="position:relative;border-radius: 50%;width: 32%;border: wheat 3px solid;margin-left: 8%;margin-right: 15%">
-        <img style="position:absolute;width: 46%;height: 88%;right: 28%;top: 6%;" src="images/logo1.png" alt="">
-        </div>
-        <div class="position:absolute;">
-		<c:choose>
-			<c:when test="${predection}">
-		    	<p>Your guess for the winner: <c:out value="${currentUser.prediction}"></c:out></p>
-			</c:when>
-			<c:otherwise>
-				<form action="/profile/predict" method="post" class="forr">
-					    <label  for="prediction">Make your world cup winner guess</label><br>
-					    <div style="display:flex">
-						<select id="prediction" name="prediction" style="margin-right: 5%;width: 60%;border-radius:20px;border: wheat;padding: 0 5%;">
-							<c:forEach var="team" items="${teams}">
-								<option><c:out value="${team}"></c:out></option>
-							</c:forEach>
-						</select>
-        				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        				<input style="color:#75263a ;font-weight: bold; border-radius:20px;border: wheat;" type="submit" value="Guess">
-		 				</div>
-				</form>
-			</c:otherwise>
-		</c:choose>
-        
-        </div>
-        
-      </div>
-</div>
-
-
+	<div class="hero overlay">
+		<div class="img-bg rellax">
+			<img src="images/photo-1637203727317-3cc1a557cdbf.jpg" alt="Image" class="img-fluid">
+		</div>
+		<div class="container">
+			<div class="row align-items-center justify-content-start">
+				<div class="col-lg-5">
+					<h1 class="heading" data-aos="fade-up">About Us</h1>
+					<p class="mb-5" data-aos="fade-up">In the spirit of World Cup season and the huge number of fans in Palestine who would prefer to
+						watch the games with their friends, family members or just a fellow fan. There’s a lack of proper
+						organization to book a place to watch a game. Case in point, many fans don’t know or even can’t
+						find the places which are screening the game or find out upon arrival that many places are at full
+						capacity. Based on this, our website will help fans to look up places to watch the games, also
+						users can host these game events at their own place whether it’s a local café, restaurant or host’s
+						private place.</p>
+					<div data-aos="fade-up">
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
 
 
 		<script src="js/bootstrap.bundle.min.js"></script>
@@ -124,6 +115,5 @@
 		<script src="js/flatpickr.js"></script>
 		<script src="js/glightbox.min.js"></script>
 		<script src="js/custom.js"></script>
-
 </body>
 </html>

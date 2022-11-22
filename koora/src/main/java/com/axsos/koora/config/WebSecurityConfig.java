@@ -22,7 +22,7 @@ public class WebSecurityConfig {
 		
 		http.
 	            authorizeRequests()
-	                .antMatchers("/css/**", "/js/**", "/registration").permitAll()
+	                .antMatchers("/static/**","/css/**", "/js/**","/images/**","**/bootstrap/**","**/jquery/**","/webjars/**","/index.css/**","/events/**","/matchevents/**","/matches/**","/profile/**", "/registration", "/favicon.ico", "/api").permitAll()
 	                .antMatchers("/admin/**").access("hasRole('ADMIN')")
 	                .anyRequest().authenticated()
 	                .and()

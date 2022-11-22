@@ -33,8 +33,22 @@ public class MainController {
       this.mainService=mainService ;
       this.matchService=matchService ;
   }
-	
-	 @GetMapping ("/events/new")
+	@GetMapping("/matchevents/{id}")
+	public String events(Model model, @PathVariable("id")Long id) {
+		Match match = matchService.findonematch(id);
+		 List<Event> events = match.getGames();
+	     model.addAttribute("events", events);
+
+	     model.addAttribute("match", match);
+		return "events.jsp";
+	}
+	@GetMapping("/matches")
+	public String matches(Model model) {
+		 List<Match> matches = matchService.findallmatches();
+	     model.addAttribute("matches", matches);
+		return "matches.jsp";
+	}
+	 @GetMapping("/events/new")
 	   public String newevent(@ModelAttribute("event")Event event,Principal principal, Model model) {
 		 String username = principal.getName();
 		 List<Match> matches = matchService.findallmatches();
@@ -76,7 +90,7 @@ public class MainController {
 		   }
 	   }
 	   
-	   @GetMapping("/events/{id}")
+	   @GetMapping("/{id}")
 	   public String showevent(@PathVariable("id") Long id, Model model, Principal principal) {
 		   Event event = mainService.findoneevent(id);
 		   String username = principal.getName();
@@ -86,9 +100,11 @@ public class MainController {
 		   if (users.contains(user)) {
 			   attendance = true;
 		   }
+		   Integer remainingSeats = event.getCapacity() - users.size();
 		   model.addAttribute("event", event);
 	       model.addAttribute("currentUser", user);
 	       model.addAttribute("attendance", attendance);
+	       model.addAttribute("remainingSeats", remainingSeats);
 		   return "oneevent.jsp";
 	   }
 	   
@@ -126,6 +142,20 @@ public class MainController {
 		    return "redirect:/home";
 		    }
 	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
+	   
 	   @GetMapping("/profile")
 	   public String profile(Principal principal, Model model) {
 			String username = principal.getName();
@@ -149,4 +179,16 @@ public class MainController {
 		   mainService.updatUser(user);
 		   return "redirect:/profile";
 	   }
+	   @GetMapping("/test")
+	   public String test() {
+		   return "test.jsp";
+	   }
+	   @GetMapping("/aboutus")
+	   public String aboutUs() {
+		   return "aboutus.jsp";
+	   }
+//	   @GetMapping("/matches")
+//	   public String showMatches() {
+//		   return "matches.jsp";
+//	   }
 }

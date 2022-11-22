@@ -6,35 +6,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+<base href="/">
 <!-- YOUR own local CSS -->
-<link rel="stylesheet" href="/css/main.css"/>
-<meta charset="ISO-8859-1">
-<title><c:out value="${event.name}"/></title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/style1.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="css/display.css">
+    <title>Events Ticket Card</title>
 </head>
 <body>
-	<main class="container">
-		<h4>Event: <c:out value="${event.name}"/></h4>
-		<h4>Event: <c:out value="${event.capacity}"/></h4>
-		<h4>Event: <c:out value="${event.contact}"/></h4>
-		<h4>Event: <c:out value="${event.location}"/></h4>
-		<h4>Event: <c:out value="${event.city}"/></h4>
-		<h4>Event: <c:out value="${event.placeType}"/></h4>
-		<h4>Event: <c:out value="${event.match.firstTeam}"/> Vs <c:out value="${event.match.secondTeam}"/></h4>
-		
-		<c:choose>
+    <nav>
+		<div class="logo">
+			<p>WorldCup</p>
+		</div>
+		<ul>
+			<li><a href="" class="active">Home</a></li>
+			<li><a href="">about Us</a></li>
+			<li><a href="">Places</a></li>
+			<li><a href="">profile</a></li>
+			<li><a href="">Create</a></li>
+            <li><a href="">LogOut</a></li>
+		</ul>
+	</nav>
+    <div class="container">
+        <div class="item-container">
+            <div class="img-container">
+                <img src="2022-world-cup-emblem (1).gif" alt="Event image">
+            </div>
+
+            <div class="body-container">
+                <div class="overlay"></div>
+
+                <div class="event-info">
+                    <p class="title"><c:out value="${event.name}"/></p>
+                    <div class="separator"></div>
+                    <p class="info"><c:out value="${event.city}"/></p>
+                    <p class="price"><c:out value="${event.capacity}"/>, Remaining seats: <c:out value="${remainingSeats}"/></p>
+
+                    <div class="additional-info">
+                        <p class="info">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <c:out value="${event.location}"/>
+                        </p>
+                        
+
+                        <p class="info description">
+                            Welcome! Everyone has a unique perspective after visiting our place, and we would love you
+                            to share yours with us! We meet one Sunday evening <span>more...</span>
+                        </p>
+                    </div>
+                </div>
+                <c:choose>
 			<c:when test="${event.host.id==currentUser.id}">
-		    	<a style="text-decoration: none;" href="/events/${event.id}/delete">Delete</a>
-				<a style="text-decoration: none;" href="/events/${event.id}/edit">Edit</a>
+		    	<a style="text-decoration: none;" href="/events/${event.id}/delete"  class="action">Delete</a>
+				<a style="text-decoration: none;" href="/events/${event.id}/edit"  class="action">Edit</a>
 			</c:when>
 			<c:when test="${attendance}">
-		    	<a href="/events/${event.id}/leave">Leave</a>
+		    	<a href="/events/${event.id}/leave" class="action">Leave</a>
 			</c:when>
 			<c:otherwise>
 				<c:choose>
 				<c:when test="${event.attendees.size() < event.capacity}">
-					<a href="/events/${event.id}/join">Join</a>
+					<a href="/events/${event.id}/join" class="action">Join</a>
 				</c:when>
 				<c:otherwise>
 					<p>This event is fully booked.</p>
@@ -42,7 +77,10 @@
 				</c:choose>
 			</c:otherwise>
 		</c:choose>
-	</main>
+            </div>
+        </div>
+        </div>
+
 
 </body>
 </html>

@@ -6,7 +6,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="/">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Untree.co">
@@ -76,41 +75,8 @@
 	</nav>
 
 
-    <div id="create_form">
-        <div class="for">
-            PROFILE
-        </div>
-    </div>
-<div id="create_formm">
-    <div class="forr" style="height: 300px;">
-        <div style="position:relative;border-radius: 50%;width: 32%;border: wheat 3px solid;margin-left: 8%;margin-right: 15%">
-        <img style="position:absolute;width: 46%;height: 88%;right: 28%;top: 6%;" src="images/logo1.png" alt="">
-        </div>
-        <div class="position:absolute;">
-		<c:choose>
-			<c:when test="${predection}">
-		    	<p>Your guess for the winner: <c:out value="${currentUser.prediction}"></c:out></p>
-			</c:when>
-			<c:otherwise>
-				<form action="/profile/predict" method="post" class="forr">
-					    <label  for="prediction">Make your world cup winner guess</label><br>
-					    <div style="display:flex">
-						<select id="prediction" name="prediction" style="margin-right: 5%;width: 60%;border-radius:20px;border: wheat;padding: 0 5%;">
-							<c:forEach var="team" items="${teams}">
-								<option><c:out value="${team}"></c:out></option>
-							</c:forEach>
-						</select>
-        				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        				<input style="color:#75263a ;font-weight: bold; border-radius:20px;border: wheat;" type="submit" value="Guess">
-		 				</div>
-				</form>
-			</c:otherwise>
-		</c:choose>
-        
-        </div>
-        
-      </div>
-</div>
+
+
 
 
 

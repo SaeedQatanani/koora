@@ -10,7 +10,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="author" content="Untree.co">
-	<link rel="shortcut icon" href="favicon.png">
 	<meta name="description" content="" />
 	<meta name="keywords" content="bootstrap, bootstrap5" />
 	<link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +24,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><c:out value="${currentUser.username}"/> profile</title>
+	<title>Matches Dashboard</title>
 </head>
 <body  style="background-color: wheat">
 
@@ -48,7 +47,7 @@
 					<div class="col-lg-6 d-none d-lg-inline-block text-center nav-center-wrap">
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
 							<li class="active"><a style="font-weight: bold" href="/">Home</a></li>
-							<li class="active"><a style="font-weight: bold"href="/">Matches</a></li>
+							<li class="active"><a style="font-weight: bold"href="/matches">Matches</a></li>
 							<li class="active"><a style="font-weight: bold"href="/events/new">Create Event</a></li>
 							<li class="active"><a style="font-weight: bold"href="/profile">Profile</a></li>
 							<li class="active"><a style="font-weight: bold"href="/aboutus">About us</a></li>
@@ -74,43 +73,25 @@
 			</div>
 		</div>
 	</nav>
-
-
-    <div id="create_form">
-        <div class="for">
-            PROFILE
+    <img src="images/Untitled-3.png" style="width: 10%;margin-top:7% ;margin-left: 44%;" alt="">
+    <div id="create_formmm11">
+        <div class="forr11" style="position:relative;">
+            <p style="position: absolute;font-weight: bold; margin-top: 1.5%"><c:out value="${match.firstTeam}"/></p>
+            <span style="font-weight: bold;font-size:xx-large;margin-left: 45%;">VS</span>
+            <p style="position: absolute;font-weight: bold;margin-left: 85%;margin-top: 1.5%"><c:out value="${match.secondTeam}"/></p>
         </div>
+    <div style="display:flex;justify-content:space-between ;margin-top: 2%;flex-direction: row;">
+        <div>
+	<c:forEach var="event" items="${events}">
+        <button style="padding: 2%;background-color: #75263a;color:wheat ;font-weight: bold;width:100%;margin-top: 10px; border-radius:20px;border: wheat;" type="submit"><a href="/<c:out value="${event.id}"/>"><c:out value="${event.name}"/></a></button>
+	</c:forEach>
     </div>
-<div id="create_formm">
-    <div class="forr" style="height: 300px;">
-        <div style="position:relative;border-radius: 50%;width: 32%;border: wheat 3px solid;margin-left: 8%;margin-right: 15%">
-        <img style="position:absolute;width: 46%;height: 88%;right: 28%;top: 6%;" src="images/logo1.png" alt="">
-        </div>
-        <div class="position:absolute;">
-		<c:choose>
-			<c:when test="${predection}">
-		    	<p>Your guess for the winner: <c:out value="${currentUser.prediction}"></c:out></p>
-			</c:when>
-			<c:otherwise>
-				<form action="/profile/predict" method="post" class="forr">
-					    <label  for="prediction">Make your world cup winner guess</label><br>
-					    <div style="display:flex">
-						<select id="prediction" name="prediction" style="margin-right: 5%;width: 60%;border-radius:20px;border: wheat;padding: 0 5%;">
-							<c:forEach var="team" items="${teams}">
-								<option><c:out value="${team}"></c:out></option>
-							</c:forEach>
-						</select>
-        				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-        				<input style="color:#75263a ;font-weight: bold; border-radius:20px;border: wheat;" type="submit" value="Guess">
-		 				</div>
-				</form>
-			</c:otherwise>
-		</c:choose>
-        
-        </div>
-        
-      </div>
-</div>
+    </div>
+    </div>
+
+
+
+
 
 
 
