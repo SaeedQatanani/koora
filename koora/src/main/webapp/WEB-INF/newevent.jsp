@@ -78,34 +78,42 @@
 		<form:form class="forr" action="/events/create" method="post" modelAttribute="event" >
 			<form:input type="hidden"  path="host" value="${currentUser.id}"/>
 			<div>
+			<div>
 		<form:label  path="name">Name</form:label>
 		 <form:errors path="name" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="text"  aria-describedby="emailHelp"  path="name"></form:input>
-	   
+			</div>
+	   <div>
 		<form:label  path="location">Location</form:label>
 		 <form:errors path="location" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="text" aria-describedby="emailHelp"  path="location"></form:input>
-		
+	   </div>
+		<div>
 		<form:label  path="city">City</form:label>
 		<form:select style="border-radius:20px;border: wheat;padding: 0 5%;" path="city"><form:options items="${cities}" /></form:select>
-	  
+		</div>
+	  <div>
 		<form:label  path="placeType">Place type</form:label>
 		<form:select style="border-radius:20px;border: wheat;padding: 0 5%;" path="placeType"><form:options items="${placeTypes}" /></form:select>  
-	  
+	  </div>
+	  <div>
 		<form:label path="capacity">Capacity</form:label>
 		<form:errors path="capacity" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="number" aria-describedby="emailHelp"  path="capacity"></form:input>  
-	  
+	  </div>
+	  <div>
 		<form:label path="contact">Contact</form:label>
 		<form:errors path="contact" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="text" aria-describedby="emailHelp"  path="contact"></form:input>  
-	  
+	  </div>
+	  <div>
 		<form:label  path="match">Match</form:label>
 		<form:select path="match" style="border-radius:20px;border: wheat;padding: 0 5%;">
 			<c:forEach var="match" items="${matches}">
 				<form:option value="${match.id}"><c:out value="${match.firstTeam}"/>  vs <c:out value="${match.secondTeam}"/></form:option>
 			</c:forEach>
 		</form:select>  
+	  </div>
 	  
 		  <button type="submit" style="color:#75263a ;font-weight: bold;width: 110%;margin-top: 10px; border-radius:20px;border: wheat;">Submit</button>
 			</div>

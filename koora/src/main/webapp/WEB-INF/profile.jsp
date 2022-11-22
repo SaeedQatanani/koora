@@ -48,7 +48,7 @@
 					<div class="col-lg-6 d-none d-lg-inline-block text-center nav-center-wrap">
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
 							<li class="active"><a style="font-weight: bold" href="/">Home</a></li>
-							<li class="active"><a style="font-weight: bold"href="/">Matches</a></li>
+							<li class="active"><a style="font-weight: bold"href="/matches">Matches</a></li>
 							<li class="active"><a style="font-weight: bold"href="/events/new">Create Event</a></li>
 							<li class="active"><a style="font-weight: bold"href="/profile">Profile</a></li>
 							<li class="active"><a style="font-weight: bold"href="/aboutus">About us</a></li>

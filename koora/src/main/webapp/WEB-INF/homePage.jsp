@@ -158,14 +158,6 @@
 	
 <img src="images/photo.jpg" width="100%" alt="" style="opacity: 0.75;">
 
-<div class="topnav" style="position: absolute; top:300px; left:33.3%; width:500px">
-	<div class="search-container">
-	  <form style="display:flex;" action="/action_page.php">
-		<input type="text" placeholder="Search.." name="search">
-		<button  style="border: 1px solid rgb(214, 214, 214);border-radius: 20px" type="submit"><i class="fa fa-search"></i></button>
-	  </form>
-	</div>
-</div>
 
 </div>
 <div style="background-color: #8c1638">

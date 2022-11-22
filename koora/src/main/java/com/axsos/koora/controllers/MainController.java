@@ -144,7 +144,10 @@ public class MainController {
 	   
 	   
 	   
-	   
+	   @GetMapping("/api")
+	   public String api() {
+		   return "api.jsp";
+	   }
 	   
 	   
 	   

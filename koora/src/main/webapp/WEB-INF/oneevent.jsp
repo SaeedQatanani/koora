@@ -22,11 +22,11 @@
 			<p>WorldCup</p>
 		</div>
 		<ul>
-			<li><a href="" class="active">Home</a></li>
-			<li><a href="">about Us</a></li>
-			<li><a href="">Places</a></li>
-			<li><a href="">profile</a></li>
-			<li><a href="">Create</a></li>
+			<li><a href="/" class="active">Home</a></li>
+			<li><a href="/aboutus">about Us</a></li>
+			<li><a href="/events">Places</a></li>
+			<li><a href="/profile">profile</a></li>
+			<li><a href="/events/new">Create</a></li>
             <li><a href="">LogOut</a></li>
 		</ul>
 	</nav>
@@ -43,7 +43,7 @@
                     <p class="title"><c:out value="${event.name}"/></p>
                     <div class="separator"></div>
                     <p class="info"><c:out value="${event.city}"/></p>
-                    <p class="price"><c:out value="${event.capacity}"/>, Remaining seats: <c:out value="${remainingSeats}"/></p>
+                    <p class="price">Capacity: <c:out value="${event.capacity}"/>, Remaining seats: <c:out value="${remainingSeats}"/></p>
 
                     <div class="additional-info">
                         <p class="info">
@@ -60,7 +60,6 @@
                 </div>
                 <c:choose>
 			<c:when test="${event.host.id==currentUser.id}">
-		    	<a style="text-decoration: none;" href="/events/${event.id}/delete"  class="action">Delete</a>
 				<a style="text-decoration: none;" href="/events/${event.id}/edit"  class="action">Edit</a>
 			</c:when>
 			<c:when test="${attendance}">

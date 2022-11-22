@@ -22,7 +22,7 @@ public class WebSecurityConfig {
 		
 		http.
 	            authorizeRequests()
-	                .antMatchers("/static/**","/css/**", "/js/**","/images/**","**/bootstrap/**","**/jquery/**","/webjars/**","/index.css/**","/events/**","/matchevents/**","/matches/**","/profile/**", "/registration", "/favicon.ico", "/api").permitAll()
+	                .antMatchers("/static/**","/css/**", "/js/**","/images/**","**/bootstrap/**","**/jquery/**","/webjars/**","/index.css/**","/events/**","/matchevents/**","/matches/**","/profile/**", "/registration", "/favicon.ico", "/api", "/2022-world-cup-emblem%20(1).gif").permitAll()
 	                .antMatchers("/admin/**").access("hasRole('ADMIN')")
 	                .anyRequest().authenticated()
 	                .and()
