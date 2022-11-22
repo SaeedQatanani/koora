@@ -70,5 +70,10 @@ public class MatchController {
 		   matchService.deletematch(id);
 		   return "redirect:/admin";
 	   }
+	   
+	   @GetMapping("/api")
+	   public String showapi() {
+		   return "sthnew.jsp";
+	   }
 
 }
