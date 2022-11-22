@@ -149,4 +149,9 @@ public class MainController {
 		   mainService.updatUser(user);
 		   return "redirect:/profile";
 	   }
+	   
+	   @GetMapping("/api")
+	   public String showapi() {
+		   return "sthnew.jsp";
+	   }
 }
