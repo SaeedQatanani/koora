@@ -1,4 +1,22 @@
 /* create event */
+input,
+select,
+optgroup,
+textarea {
+	
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+button {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit; }
+
+
+
 #create_formmm11{
   padding-left: 22.5%;
   padding-right: 22.5%;
@@ -41,7 +59,7 @@
  #create_formmm{
   padding-left: 22.5%;
   padding-right: 22.5%;
-  padding-top: 10%;
+  padding-top: 7%;
  }
  #create_formm{
   padding-left: 22.5%;
@@ -247,10 +265,10 @@ sup {
   top: -.5em; }
 
 a {
-  color: #f17945;
+  color: #f5deb3;
   text-decoration: underline; }
   a:hover {
-    color: #c16137; }
+    color: #f5deb3; }
 
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
   color: inherit;
@@ -334,15 +352,7 @@ button {
 button:focus:not(:focus-visible) {
   outline: 0; }
 
-input,
-button,
-select,
-optgroup,
-textarea {
-  margin: 0;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit; }
+
 
 button,
 select {
@@ -9270,12 +9280,13 @@ a {
   text-decoration: none; }
 
 .btn {
+	font-weight:bold;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
   padding-right: 30px;
   border-radius: 30px;
-  color: #fff;
+  color: #742233;
   font-size: 15px; }
   .btn:hover {
     color: #fff; }
@@ -9767,21 +9778,13 @@ textarea {
   bottom: 0;
   left: 0; }
 
-.hero {
-  background-color: #000;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  position: relative;
-  overflow: hidden;
-  -o-object-fit: cover;
-  object-fit: cover; }
+
   .hero img {
     max-width: 100%;
     position: absolute;
     -webkit-transform: scale(1.2) translate(5%, -5%);
     -ms-transform: scale(1.2) translate(5%, -5%);
-    transform: scale(1.65) translate(13%, 7.5%); }
+    transform: scale(1.7) translate(13%, 7.5%); }
     @media (max-width: 1199.98px) {
       .hero img {
         -webkit-transform: scale(1.6) translate(10%, -5%);
@@ -9801,8 +9804,8 @@ textarea {
     position: relative;
     z-index: 2; }
   .hero, .hero > .container > .row {
-    padding-top: 4.5rem;
-    padding-bottom: 1.22rem; }
+    padding-top: 9.5rem;
+    padding-bottom: 9.5rem; }
     @media (max-width: 767.98px) {
       .hero, .hero > .container > .row {
         padding-top: 4rem;
@@ -9813,7 +9816,6 @@ textarea {
   .hero.overlay:before {
     z-index: 1;
     content: "";
-    position: absolute;
     left: 0;
     top: 0;
     bottom: 0;

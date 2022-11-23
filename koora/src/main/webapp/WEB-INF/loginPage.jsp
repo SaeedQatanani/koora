@@ -17,6 +17,8 @@
 <body>
     <div class="container  p-4">
         <div class="row main mt-3">
+         <div class="col-md-6 p-5 " id="signUp">
+         </div>
  		<!-- Login Form  -->
             <div class="col-md-6 p-5 " id="login">
                 <h1 class="display-4 text-center ">Login</h1>

@@ -56,6 +56,7 @@
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
 							<li class="active"><a style="font-weight: bold" href="/matches">Home</a></li>
 							<li class="active"><a style="font-weight: bold"href="/">Matches</a></li>
+							<li class="active"><a style="font-weight: bold"href="/api">More On</a></li>
 							<li class="active"><a style="font-weight: bold"href="/events/new">Create Event</a></li>
 							<li class="active"><a style="font-weight: bold"href="/profile">Profile</a></li>
 							<li class="active"><a style="font-weight: bold"href="/aboutus">About us</a></li>
@@ -91,13 +92,8 @@
 			<div class="row align-items-center justify-content-start">
 				<div class="col-lg-5">
 					<h1 class="heading" data-aos="fade-up">About Us</h1>
-					<p class="mb-5" data-aos="fade-up">In the spirit of World Cup season and the huge number of fans in Palestine who would prefer to
-						watch the games with their friends, family members or just a fellow fan. There’s a lack of proper
-						organization to book a place to watch a game. Case in point, many fans don’t know or even can’t
-						find the places which are screening the game or find out upon arrival that many places are at full
-						capacity. Based on this, our website will help fans to look up places to watch the games, also
-						users can host these game events at their own place whether it’s a local café, restaurant or host’s
-						private place.</p>
+					<p class="mb-5" data-aos="fade-up">We are a group of future developers who are also passionate about football. 
+We created this website as a spot hub for World Cup fans in Palestine to to look up places to watch the games, also our users can host these game events at their own place whether it’s a local café, restaurant or host’s private place.</p>
 					<div data-aos="fade-up">
 				</div>
 			</div>

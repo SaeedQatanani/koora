@@ -25,7 +25,7 @@
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Edit Event</title>
+	<title>New Event</title>
 </head>
 <body  style="background-color: wheat">
 
@@ -49,6 +49,7 @@
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
 							<li class="active"><a style="font-weight: bold" href="/">Home</a></li>
 							<li class="active"><a style="font-weight: bold"href="/matches">Matches</a></li>
+							<li class="active"><a style="font-weight: bold"href="/api">More On</a></li>
 							<li class="active"><a style="font-weight: bold"href="/events/new">Create Event</a></li>
 							<li class="active"><a style="font-weight: bold"href="/profile">Profile</a></li>
 							<li class="active"><a style="font-weight: bold"href="/aboutus">About us</a></li>
@@ -75,55 +76,55 @@
 		</div>
 	</nav>
 	<div id="create_formmm">
-		<form:form action="/events/${event.id}/edit" method="post" modelAttribute="event">
-<input type="hidden" name="_method" value="put">
-<form:input type="hidden"  path="host" value="${currentUser.id}"/>
 
-<form:input type="hidden"  path="attendees" />
-			<form:input type="hidden"  path="host" value="${currentUser.id}"/>
-			<div>
-			<div>
+		<form:form action="/events/${event.id}/edit" method="post" modelAttribute="event">
+            <input type="hidden" name="_method" value="put">
+            <form:input type="hidden"  path="host" value="${currentUser.id}"/>
+            
+            <form:input type="hidden"  path="attendees" />
+			<div >
+			<div >
 		<form:label  path="name">Name</form:label>
 		 <form:errors path="name" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="text"  aria-describedby="emailHelp"  path="name"></form:input>
-			</div>
-	   <div>
+			<hr></div>
+			
+	   <div >
 		<form:label  path="location">Location</form:label>
 		 <form:errors path="location" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="text" aria-describedby="emailHelp"  path="location"></form:input>
-	   </div>
-		<div>
+	   <hr></div>
+		<div >
 		<form:label  path="city">City</form:label>
-		<form:select style="border-radius:20px;border: wheat;padding: 0 5%;" path="city"><form:options items="${cities}" /></form:select>
-		</div>
-	  <div>
+		<form:select style="margin-left: 27%;border-radius:20px;border: wheat;padding: 0 5%;" path="city"><form:options items="${cities}" /></form:select>
+		<hr></div>
+	  <div >
 		<form:label  path="placeType">Place type</form:label>
-		<form:select style="border-radius:20px;border: wheat;padding: 0 5%;" path="placeType"><form:options items="${placeTypes}" /></form:select>  
-	  </div>
-	  <div>
+		<form:select style="margin-left: 10%;border-radius:20px;border: wheat;padding: 0 5%;" path="placeType"><form:options items="${placeTypes}" /></form:select>  
+	  <hr></div>
+	  <div >
 		<form:label path="capacity">Capacity</form:label>
 		<form:errors path="capacity" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="number" aria-describedby="emailHelp"  path="capacity"></form:input>  
-	  </div>
-	  <div>
+	  <hr></div>
+	  <div >
 		<form:label path="contact">Contact</form:label>
 		<form:errors path="contact" class="text-danger" />
 		<form:input style="border-radius:20px;border: wheat;padding: 0 5%;" type="text" aria-describedby="emailHelp"  path="contact"></form:input>  
-	  </div>
-	  <div>
+	  <hr></div>
+	  <div >
 		<form:label  path="match">Match</form:label>
 		<form:select path="match" style="border-radius:20px;border: wheat;padding: 0 5%;">
 			<c:forEach var="match" items="${matches}">
 				<form:option value="${match.id}"><c:out value="${match.firstTeam}"/>  vs <c:out value="${match.secondTeam}"/></form:option>
 			</c:forEach>
 		</form:select>  
-	  </div>
+	  <hr></div>
 	  
-		  <button type="submit" style="color:#75263a ;font-weight: bold;width: 110%;margin-top: 10px; border-radius:20px;border: wheat;">Submit</button>
+		  <button type="submit" style="color:#75263a ;font-weight: bold;width: 86%;margin-top: 10px; border-radius:20px;border: wheat;">Submit</button>
 			</div>
-			<img style="margin-left: 30%;width: 20%;" src="images/logoo.jpg" alt="">
 		 </form:form>
-		 <button type="submit" class="btn btn-danger"><a style="text-decoration: none;" href="/events/${event.id}/delete"  class="action">Delete</a></button>
+		             <button type="submit" class="btn btn-danger"><a style="text-decoration: none;" href="/events/${event.id}/delete"  class="action">Delete</a></button>
 		 
 	</div>
 

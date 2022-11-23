@@ -2,6 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
@@ -43,7 +45,7 @@
 			<div class="site-navigation">
 				<div  class="row">
 					<div class="col-6 col-lg-3">
-						<a href="index.html" class="logo m-0 float-start">WorldCupUp</a>
+						<a href="index.html" class="logo m-0 float-start">Ole Ola</a>
 					</div>
 					<div class="col-lg-6 d-none d-lg-inline-block text-center nav-center-wrap">
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
@@ -78,7 +80,7 @@
 
     <div id="create_form">
         <div class="for">
-            PROFILE
+            Welcome, <c:out value="${currentUser.username}"/>
         </div>
     </div>
 <div id="create_formm">
@@ -86,10 +88,10 @@
         <div style="position:relative;border-radius: 50%;width: 32%;border: wheat 3px solid;margin-left: 8%;margin-right: 15%">
         <img style="position:absolute;width: 46%;height: 88%;right: 28%;top: 6%;" src="images/logo1.png" alt="">
         </div>
-        <div class="position:absolute;">
+        <div class="position:absolute;" style="text-align: center;">
 		<c:choose>
 			<c:when test="${predection}">
-		    	<p>Your guess for the winner: <c:out value="${currentUser.prediction}"></c:out></p>
+		    	<p>Your guess for the winner:<br> <span style="font-size:xx-large;"><c:out value="${currentUser.prediction}"></c:out></span>.<br> Keep an eye on your profile for your prize after the final!!</p>
 			</c:when>
 			<c:otherwise>
 				<form action="/profile/predict" method="post" class="forr">
@@ -106,7 +108,10 @@
 				</form>
 			</c:otherwise>
 		</c:choose>
-        
+		<p>Your booked games:</p>
+        <c:forEach var="event" items="${currentUser.events}">
+			<p><c:out value="${event.name}"></c:out>, at <c:out value="${event.match.matchTime}"></c:out> <fmt:formatDate value="${event.match.matchDate}" pattern="MMMM dd, yyyy"/></p>
+		</c:forEach>
         </div>
         
       </div>

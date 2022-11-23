@@ -48,6 +48,7 @@
 						<ul class="js-clone-nav  text-center site-menu p-0 m-0">
 							<li class="active"><a style="font-weight: bold" href="/">Home</a></li>
 							<li class="active"><a style="font-weight: bold"href="/matches">Matches</a></li>
+							<li class="active"><a style="font-weight: bold"href="/api">More On</a></li>
 							<li class="active"><a style="font-weight: bold"href="/events/new">Create Event</a></li>
 							<li class="active"><a style="font-weight: bold"href="/profile">Profile</a></li>
 							<li class="active"><a style="font-weight: bold"href="/aboutus">About us</a></li>
@@ -83,7 +84,7 @@
     <div style="display:flex;justify-content:space-between ;margin-top: 2%;flex-direction: row;">
         <div>
 	<c:forEach var="event" items="${events}">
-        <button style="padding: 2%;background-color: #75263a;color:wheat ;font-weight: bold;width:100%;margin-top: 10px; border-radius:20px;border: wheat;" type="submit"><a href="/<c:out value="${event.id}"/>"><c:out value="${event.name}"/></a></button>
+        <button style="margin-left:115%;padding: 2%;background-color: #75263a;color:wheat ;font-weight: bold;width:100%;margin-top: 10px; border-radius:20px;border: wheat;" type="submit"><a href="/<c:out value="${event.id}"/>"><c:out value="${event.name}"/></a></button>
 	</c:forEach>
     </div>
     </div>

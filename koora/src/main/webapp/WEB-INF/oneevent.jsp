@@ -32,9 +32,7 @@
 	</nav>
     <div class="container">
         <div class="item-container">
-            <div class="img-container">
-                <img src="2022-world-cup-emblem (1).gif" alt="Event image">
-            </div>
+
 
             <div class="body-container">
                 <div class="overlay"></div>
