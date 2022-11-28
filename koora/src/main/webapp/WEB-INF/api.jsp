@@ -82,8 +82,7 @@
             const options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': 'e96796d8f9mshf5e750bee34fd36p143071jsn177a35b49e05',
-		'X-RapidAPI-Host': 'api-football-v1.p.rapidapi.com'
+		
 	}
 };
 
